@@ -1,0 +1,234 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app1-html
+  namespace: parcial-aa
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>Aplicacion 1</h1>
+        <p>Servicio 1 - Kubernetes + Traefik</p>
+      </body>
+    </html>
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+  namespace: parcial-aa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: html
+          configMap:
+            name: app1-html
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-service
+  namespace: parcial-aa
+spec:
+  type: ClusterIP
+  selector:
+    app: app1
+  ports:
+    - port: 80
+      targetPort: 80
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app2-html
+  namespace: parcial-aa
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>Aplicacion 2</h1>
+        <p>Servicio 2 - Kubernetes + Traefik</p>
+      </body>
+    </html>
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app2
+  namespace: parcial-aa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app2
+  template:
+    metadata:
+      labels:
+        app: app2
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: html
+          configMap:
+            name: app2-html
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app2-service
+  namespace: parcial-aa
+spec:
+  type: ClusterIP
+  selector:
+    app: app2
+  ports:
+    - port: 80
+      targetPort: 80
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app3-html
+  namespace: parcial-aa
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>Aplicacion 3</h1>
+        <p>Servicio 3 - Kubernetes + Traefik</p>
+      </body>
+    </html>
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app3
+  namespace: parcial-aa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app3
+  template:
+    metadata:
+      labels:
+        app: app3
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: html
+          configMap:
+            name: app3-html
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app3-service
+  namespace: parcial-aa
+spec:
+  type: ClusterIP
+  selector:
+    app: app3
+  ports:
+    - port: 80
+      targetPort: 80
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app4-html
+  namespace: parcial-aa
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>Aplicacion 4</h1>
+        <p>Servicio 4 - Kubernetes + Traefik</p>
+      </body>
+    </html>
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app4
+  namespace: parcial-aa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app4
+  template:
+    metadata:
+      labels:
+        app: app4
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: html
+          configMap:
+            name: app4-html
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app4-service
+  namespace: parcial-aa
+spec:
+  type: ClusterIP
+  selector:
+    app: app4
+  ports:
+    - port: 80
+      targetPort: 80

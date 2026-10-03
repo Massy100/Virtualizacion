@@ -1,0 +1,11 @@
+service:
+  enabled: true
+  type: LoadBalancer
+
+providers:
+  kubernetesIngress:
+    enabled: true
+
+ingressClass:
+  enabled: true
+  isDefaultClass: false
