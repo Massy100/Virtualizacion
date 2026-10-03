@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app1-ingress
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   ingressClassName: traefik
   rules:
@@ -22,7 +22,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app2-ingress
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   ingressClassName: traefik
   rules:
@@ -42,7 +42,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app3-ingress
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   ingressClassName: traefik
   rules:
@@ -62,7 +62,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app4-ingress
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   ingressClassName: traefik
   rules:

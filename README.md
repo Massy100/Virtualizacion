@@ -15,7 +15,7 @@ Para lograrlo se utilizaron las siguientes tecnologías:
 - NGINX
 - Windows Hosts
 
-La arquitectura implementada permite que cuatro aplicaciones diferentes sean accedidas utilizando distintos nombres de dominio, mientras todas utilizan la misma dirección IP asignada al servicio `LoadBalancer` de Traefik.
+La arquitectura implementada permite acceder a cuatro aplicaciones diferentes mediante distintos nombres de dominio, mientras todas comparten una única dirección IP asignada al servicio `LoadBalancer` de Traefik.
 
 ---
 
@@ -60,21 +60,21 @@ Se crearon los siguientes:
 ```text
 metallb-system
 traefik
-parcial-aa
+parcial-amcr
 ```
 
 El namespace `metallb-system` contiene los componentes de MetalLB.
 
 El namespace `traefik` contiene el Ingress Controller Traefik.
 
-El namespace `parcial-aa` contiene los cuatro Deployments, Services e Ingress de las aplicaciones.
+El namespace `parcial-amcr` contiene los cuatro Deployments, Services e Ingress de las aplicaciones.
 
 Comandos utilizados:
 
 ```powershell
 kubectl create namespace metallb-system
 kubectl create namespace traefik
-kubectl create namespace parcial-aa
+kubectl create namespace parcial-amcr
 ```
 
 Para verificar:
@@ -268,9 +268,9 @@ kubectl apply -f .\apps\applications.yaml
 Se verificó utilizando:
 
 ```powershell
-kubectl get deployments -n parcial-aa
-kubectl get pods -n parcial-aa
-kubectl get svc -n parcial-aa
+kubectl get deployments -n parcial-amcr
+kubectl get pods -n parcial-amcr
+kubectl get svc -n parcial-amcr
 ```
 
 Los cuatro Deployments quedaron disponibles y todos los Pods se encontraron en estado `Running`.
@@ -301,7 +301,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app1-ingress
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   ingressClassName: traefik
   rules:
@@ -326,7 +326,7 @@ kubectl apply -f .\apps\ingress.yaml
 La configuración fue verificada mediante:
 
 ```powershell
-kubectl get ingress -n parcial-aa
+kubectl get ingress -n parcial-amcr
 ```
 
 Los cuatro Ingress utilizaron la dirección asignada por MetalLB:
@@ -490,4 +490,4 @@ Mediante esta práctica se implementó un sistema de exposición y enrutamiento 
 
 MetalLB permitió proporcionar una dirección IP al servicio `LoadBalancer` de Traefik, mientras que Traefik permitió utilizar múltiples nombres de dominio para acceder a diferentes aplicaciones sin necesidad de asignar una dirección IP independiente a cada una.
 
-Los cuatro Deployments y Services se encuentran dentro del namespace `parcial-aa`, mientras que MetalLB y Traefik utilizan sus propios namespaces. De esta manera se mantiene la separación de responsabilidades solicitada y se centraliza el acceso a las aplicaciones mediante una única entrada.
+Los cuatro Deployments y Services se encuentran dentro del namespace `parcial-amcr`, mientras que MetalLB y Traefik utilizan sus propios namespaces. De esta manera se mantiene la separación de responsabilidades solicitada y se centraliza el acceso a las aplicaciones mediante una única entrada.

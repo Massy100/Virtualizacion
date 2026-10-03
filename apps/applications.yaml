@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app1-html
-  namespace: parcial-aa
+  namespace: parcial-amcr
 data:
   index.html: |
     <!DOCTYPE html>
@@ -18,7 +18,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app1
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   replicas: 1
   selector:
@@ -47,7 +47,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: app1-service
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   type: ClusterIP
   selector:
@@ -61,7 +61,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app2-html
-  namespace: parcial-aa
+  namespace: parcial-amcr
 data:
   index.html: |
     <!DOCTYPE html>
@@ -77,7 +77,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app2
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   replicas: 1
   selector:
@@ -106,7 +106,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: app2-service
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   type: ClusterIP
   selector:
@@ -120,7 +120,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app3-html
-  namespace: parcial-aa
+  namespace: parcial-amcr
 data:
   index.html: |
     <!DOCTYPE html>
@@ -136,7 +136,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app3
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   replicas: 1
   selector:
@@ -165,7 +165,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: app3-service
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   type: ClusterIP
   selector:
@@ -179,7 +179,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app4-html
-  namespace: parcial-aa
+  namespace: parcial-amcr
 data:
   index.html: |
     <!DOCTYPE html>
@@ -195,7 +195,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app4
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   replicas: 1
   selector:
@@ -224,7 +224,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: app4-service
-  namespace: parcial-aa
+  namespace: parcial-amcr
 spec:
   type: ClusterIP
   selector:
