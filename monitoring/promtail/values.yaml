@@ -1,0 +1,25 @@
+
+daemonset:
+  enabled: true
+
+deployment:
+  enabled: false
+
+config:
+  snippets:
+    pipelineStages:
+      - cri: {}
+
+    extraRelabelConfigs:
+      - source_labels:
+          - __meta_kubernetes_namespace
+        regex: (parcial-amcr|traefik)
+        action: keep
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi

@@ -1,0 +1,12 @@
+# Helm charts descargados
+monitoring/charts/
+
+# Archivos temporales
+*.tmp
+*.bak
+
+# Credenciales y secretos locales
+.env
+.env.*
+!*.example
+kubeconfig

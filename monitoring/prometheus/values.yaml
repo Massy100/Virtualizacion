@@ -1,0 +1,32 @@
+server:
+  enabled: true
+
+  service:
+    type: ClusterIP
+
+  persistentVolume:
+    enabled: true
+    storageClass: standard
+    size: 5Gi
+
+  retention: "7d"
+
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+
+alertmanager:
+  enabled: false
+
+kube-state-metrics:
+  enabled: true
+
+prometheus-node-exporter:
+  enabled: true
+
+prometheus-pushgateway:
+  enabled: false
