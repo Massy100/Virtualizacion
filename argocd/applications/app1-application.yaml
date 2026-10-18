@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1-gitops
+  namespace: argocd-amcr
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Massy100/Virtualizacion.git
+    targetRevision: assessment-06
+    path: apps/app1
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: parcial-amcr
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=false

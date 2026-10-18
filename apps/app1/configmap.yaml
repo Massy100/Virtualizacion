@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app1-html
+  namespace: parcial-amcr
+data:
+  index.html: "<!DOCTYPE html>\n<html>\n  <body>\n    <h1>Aplicacion 1</h1>\n    <p>Servicio\
+    \ 1 - Kubernetes + Traefik</p>\n  </body>\n</html>\n"
